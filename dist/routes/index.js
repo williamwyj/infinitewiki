@@ -4,7 +4,15 @@ exports.register = void 0;
 const register = (app) => {
     const oidc = app.locals.oidc;
     app.get('/', (req, res) => {
-        res.send('Hello!');
+        const user = req.userContext ? req.userContext.userinfo : null;
+        let displayString;
+        if (user) {
+            displayString = `Hello! User logged in? ${req.isAuthenticated()}, user is ${user.name}`;
+        }
+        else {
+            displayString = `Hello! User logged in? ${req.isAuthenticated()}`;
+        }
+        res.send(displayString);
     });
     app.get('/login', oidc.ensureAuthenticated(), (req, res) => {
         res.redirect('/content');
@@ -14,7 +22,15 @@ const register = (app) => {
         res.redirect('/');
     });
     app.get("/content", oidc.ensureAuthenticated(), (req, res) => {
-        res.send('Content!');
+        const user = req.userContext ? req.userContext.userinfo : null;
+        let displayString;
+        if (user) {
+            displayString = `Content! User logged in? ${req.isAuthenticated()}, user is ${user.name}`;
+        }
+        else {
+            displayString = `Content! User logged in? ${req.isAuthenticated()}`;
+        }
+        res.send(displayString);
     });
 };
 exports.register = register;

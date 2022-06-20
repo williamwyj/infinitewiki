@@ -4,7 +4,15 @@ export const register = (app: express.Application) => {
   const oidc = app.locals.oidc;
 
   app.get('/', (req: any, res) => {
-    res.send('Hello!');
+    const user = req.userContext ? req.userContext.userinfo : null;
+    let displayString: string;
+    if (user) {
+      displayString = `Hello! User logged in? ${req.isAuthenticated()}, user is ${user.name}`
+    } else {
+      displayString = `Hello! User logged in? ${req.isAuthenticated()}`
+    }
+    res.send(displayString);
+
   })
 
   app.get('/login', oidc.ensureAuthenticated(), (req, res) => {
@@ -17,6 +25,13 @@ export const register = (app: express.Application) => {
   });
 
   app.get("/content", oidc.ensureAuthenticated(), (req: any, res) => {
-    res.send('Content!')
+    const user = req.userContext ? req.userContext.userinfo : null;
+    let displayString: string;
+    if (user) {
+      displayString = `Content! User logged in? ${req.isAuthenticated()}, user is ${user.name}`
+    } else {
+      displayString = `Content! User logged in? ${req.isAuthenticated()}`
+    }
+    res.send(displayString);
   })
 }
