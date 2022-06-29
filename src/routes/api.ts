@@ -1,0 +1,28 @@
+import * as express from "express";
+import pgPromise, { ParameterizedQuery } from "pg-promise";
+
+export const register = (app: express.Application) => {
+  const oidc = app.locals.oidc;
+  const port = parseInt(process.env.PGPORT || "5440", 10);
+  const config = {
+    database: process.env.PGDATABASE || "postgres",
+    host: process.env.PGHOST || "Localhost",
+    port,
+    user: process.env.PGUSER || "postgres"
+  };
+  const pgp = pgPromise();
+  const db = pgp(config);
+
+  app.get('/api/guitars/all', oidc.ensureAuthenticated(), async (req: any, res) => {
+    try {
+      const userId = req.userContext.userinfo.sub;
+      const guitars = await db.any(`
+        SELECT id, brand, model, year, color FROM guitars WHERE user_id = $1 ORDER by year, brand, model`, [userId]
+      );
+      return res.json(guitars);
+    } catch (err) {
+      console.log(err);
+      res.json({ error: err.message || err });
+    };
+  });
+};

@@ -8,6 +8,9 @@ import * as routes from "./routes";
 dotenv.config();
 
 const app = express();
+
+app.use(express.json());
+
 const port = process.env.SERVER_PORT;
 
 sessionAuth.register(app);

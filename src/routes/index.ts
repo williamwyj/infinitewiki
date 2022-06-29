@@ -1,4 +1,6 @@
 import * as express from 'express';
+import * as api from "./api"
+
 
 export const register = (app: express.Application) => {
   const oidc = app.locals.oidc;
@@ -7,7 +9,7 @@ export const register = (app: express.Application) => {
     const user = req.userContext ? req.userContext.userinfo : null;
     let displayString: string;
     if (user) {
-      displayString = `Hello! User logged in? ${req.isAuthenticated()}, user is ${user.name}`
+      displayString = `Hello! User logged in? ${req.isAuthenticated()}, user is ${user.name}, userID is ${user.sub}`
     } else {
       displayString = `Hello! User logged in? ${req.isAuthenticated()}`
     }
@@ -34,4 +36,6 @@ export const register = (app: express.Application) => {
     }
     res.send(displayString);
   })
+
+  api.register(app);
 }
