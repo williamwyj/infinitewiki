@@ -8,9 +8,19 @@ export default function Navigation() {
       <Navbar bg='dark' variant='dark'>
         <Container>
           <Nav className='me-auto'>
-            <Nav.Link href='#'>Ship</Nav.Link>
+            <Nav.Link href='#'>Home</Nav.Link>
+            <NavDropdown title='Ship' id='navbarScrollingDropDown'>
+              <NavDropdown.Item href='/ships/aircraft'>
+                Aircraft
+              </NavDropdown.Item>
+              <NavDropdown.Item href='#'>Small Ships</NavDropdown.Item>
+              <NavDropdown.Item href='#'>Large Ships</NavDropdown.Item>
+              <NavDropdown.Item href='#'>Utility Ships</NavDropdown.Item>
+            </NavDropdown>
             <NavDropdown title='Base' id='navbarScrollingDropDown'>
-              <NavDropdown.Item href='#'>Early</NavDropdown.Item>
+              <NavDropdown.Item href='#'>Early Phase</NavDropdown.Item>
+              <NavDropdown.Item href='#'>Mid Phase</NavDropdown.Item>
+              <NavDropdown.Item href='#'>Late Phase</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Container>
