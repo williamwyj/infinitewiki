@@ -1,14 +1,21 @@
 import React from "react";
-import logo from "./logo.svg";
-import { Counter } from "./features/counter/Counter";
+// import logo from "./logo.svg";
+// import { Counter } from "./features/counter/Counter";
 import "./App.css";
 import Navigation from "./components/Navigation";
+import Homepage from "./components/Homepage";
+import { Router, Routes, Route, BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <div className='App'>
-      <Navigation />
-      <header className='App-header'>
+      <BrowserRouter>
+        {/* <Navigation /> */}
+        <Routes>
+          <Route path='/homepage' element={<Homepage />} />
+        </Routes>
+      </BrowserRouter>
+      {/* <header className='App-header'>
         <img src={logo} className='App-logo' alt='logo' />
         <Counter />
         <p>
@@ -52,7 +59,7 @@ function App() {
             React Redux
           </a>
         </span>
-      </header>
+      </header> */}
     </div>
   );
 }

@@ -1,10 +1,16 @@
+import Navigation from "./Navigation";
+
 export default function Homepage() {
-  <div>
-    <video
-      src='../../public/video/homepage/homepage_video.mp4'
-      muted={true}
-      loop={true}
-      autoPlay={true}
-    ></video>
-  </div>;
+  return (
+    <div>
+      <Navigation />
+      <video
+        src='/video/homepage/homepage_video.mp4'
+        muted={true}
+        loop={true}
+        autoPlay={true}
+        width='100%'
+      ></video>
+    </div>
+  );
 }
