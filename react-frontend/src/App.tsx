@@ -4,6 +4,7 @@ import React from "react";
 import "./App.css";
 import Navigation from "./components/Navigation";
 import Homepage from "./components/Homepage";
+import Fighters from "./components/Fighters";
 import { Router, Routes, Route, BrowserRouter } from "react-router-dom";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         {/* <Navigation /> */}
         <Routes>
           <Route path='/homepage' element={<Homepage />} />
+          <Route path='ship/fighters' element={<Fighters />} />
         </Routes>
       </BrowserRouter>
       {/* <header className='App-header'>
