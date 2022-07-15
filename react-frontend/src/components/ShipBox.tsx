@@ -1,4 +1,4 @@
-interface ShipData {
+export interface ShipData {
   thumbnail: string;
   name: string;
   type: string;
