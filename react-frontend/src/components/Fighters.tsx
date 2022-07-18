@@ -1,6 +1,7 @@
 import Navigation from "./Navigation";
 import ShipBox from "./ShipBox";
 import ShipBoxHeader from "./ShipBoxHeader";
+import "./Fighters.scss";
 
 import type { ShipData } from "./ShipBox";
 let shipInfos: ShipData[] = [
@@ -79,7 +80,7 @@ export default function Fighter() {
         </p>
       </div>
       <div>
-        <table>
+        <table className='fighter-list-table'>
           <thead>
             <ShipBoxHeader />
           </thead>
