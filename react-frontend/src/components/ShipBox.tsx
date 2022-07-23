@@ -1,51 +1,45 @@
 export interface ShipData {
   thumbnail: string;
-  name: string;
-  type: string;
-  commandPoint: string;
-  firePower: {
-    antiShip: number;
-    antiAir: number;
-    seige: number;
-  };
-  basicStats: {
-    hp: number;
-    armor: number;
-    cruise: number;
-    warp: number;
-  };
-  combatRoles: {
-    antiShip: string;
-    antiAir: string;
-    seige: string;
-    support: string;
-    survivability: string;
-    strategic: string;
-  };
+  shipname: string;
+  shiptype: string;
+  commandpoint: string;
+  firepowership: number;
+  firepowerair: number;
+  firepowerseige: number;
+  hp: number;
+  armor: number;
+  cruise: number;
+  warp: number;
+  combatroleship: string;
+  combatroleair: string;
+  combatroleseige: string;
+  combatrolesupport: string;
+  combatrolesurvival: string;
+  combatrolestrategic: string;
 }
 
 export default function ShipBox(props: ShipData) {
   return (
     <tr>
       <td>
-        <img src={props.thumbnail} alt={props.name} />
+        <img src={props.thumbnail} alt={props.shipname} />
       </td>
-      <td>{props.name}</td>
-      <td>{props.type}</td>
-      <td>{props.commandPoint}</td>
-      <td>{props.firePower.antiShip}</td>
-      <td>{props.firePower.antiAir}</td>
-      <td>{props.firePower.seige}</td>
-      <td>{props.basicStats.hp}</td>
-      <td>{props.basicStats.armor}</td>
-      <td>{props.basicStats.cruise}</td>
-      <td>{props.basicStats.warp}</td>
-      <td>{props.combatRoles.antiShip}</td>
-      <td>{props.combatRoles.antiAir}</td>
-      <td>{props.combatRoles.seige}</td>
-      <td>{props.combatRoles.support}</td>
-      <td>{props.combatRoles.survivability}</td>
-      <td>{props.combatRoles.strategic}</td>
+      <td>{props.shipname}</td>
+      <td>{props.shiptype}</td>
+      <td>{props.commandpoint}</td>
+      <td>{props.firepowership}</td>
+      <td>{props.firepowerair}</td>
+      <td>{props.firepowerseige}</td>
+      <td>{props.hp}</td>
+      <td>{props.armor}</td>
+      <td>{props.cruise}</td>
+      <td>{props.warp}</td>
+      <td>{props.combatroleship}</td>
+      <td>{props.combatroleair}</td>
+      <td>{props.combatroleseige}</td>
+      <td>{props.combatrolesupport}</td>
+      <td>{props.combatrolesurvival}</td>
+      <td>{props.combatrolestrategic}</td>
     </tr>
   );
 }

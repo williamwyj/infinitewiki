@@ -10,7 +10,7 @@ export default function Navigation() {
           <Nav className='me-auto'>
             <Nav.Link href='#'>Home</Nav.Link>
             <NavDropdown title='Ship' id='navbarScrollingDropDown'>
-              <NavDropdown.Item href='/ships/aircraft'>
+              <NavDropdown.Item href='/ships/aircrafts'>
                 Aircraft
               </NavDropdown.Item>
               <NavDropdown.Item href='#'>Small Ships</NavDropdown.Item>
