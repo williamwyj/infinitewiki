@@ -38,6 +38,18 @@ const register = (app) => {
         }
         ;
     }));
+    app.get('/api/aircrafts', oidc.ensureAuthenticated(), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            const aircrafts = yield db.any(`
+        SELECT * FROM aircrafts`);
+            return res.json(aircrafts);
+        }
+        catch (err) {
+            console.log(err);
+            res.json({ error: err.message || err });
+        }
+        ;
+    }));
 };
 exports.register = register;
 //# sourceMappingURL=api.js.map
