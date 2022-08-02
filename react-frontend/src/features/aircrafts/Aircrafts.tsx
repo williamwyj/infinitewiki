@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { fetchDataAsync } from "./aircraftsSlice";
 
-import Navigation from "./Navigation";
-import ShipBox from "./ShipBox";
-import ShipBoxHeader from "./ShipBoxHeader";
+import Navigation from "../../components/Navigation";
+import ShipBox from "../../components/ShipBox";
+import ShipBoxHeader from "../../components/ShipBoxHeader";
 import "./Aircrafts.scss";
 
-import { getAircraftsData } from "../helpers/dbHelpers";
-
-import type { ShipData } from "./ShipBox";
+import type { ShipData } from "../../components/ShipBox";
 
 export default function Aircrafts() {
+  const dispatch = useAppDispatch();
+
   const [AircraftsData, setAircraftsData] = useState([]);
 
   useEffect(() => {
-    getAircraftsData().then((data) => {
-      console.log(data);
-      setAircraftsData(data);
-    });
+    dispatch(fetchDataAsync);
+    //   .then((data) => {
+    //   console.log(data);
+    //   setAircraftsData(data);
+    // });
   }, []);
 
   return (
