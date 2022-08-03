@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { RootState } from '../../app/store';
 
 import type { ShipData } from '../../components/ShipBox'
 import { getAircraftsData } from '../../helpers/dbHelpers'
@@ -17,7 +18,7 @@ export const fetchDataAsync = createAsyncThunk(
   'aircrafts/fetchDataAsync',
   async () => {
     const response = await getAircraftsData();
-    // console.log("Response, ", )
+    console.log("Response, ", response)
     return response;
   }
 )
@@ -33,12 +34,14 @@ export const aircraftsSlice = createSlice({
       })
       .addCase(fetchDataAsync.fulfilled, (state, action) => {
         state.status = 'loaded';
-        state.data = action.payload;
+        state.data.aircrafts = action.payload;
       })
       .addCase(fetchDataAsync.rejected, (state) => {
         state.status = 'failed';
       })
   }
 })
+
+export const selectAircrafts = (state: RootState) => state.aircrafts.data;
 
 export default aircraftsSlice.reducer;

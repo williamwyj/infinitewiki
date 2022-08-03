@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { fetchDataAsync } from "./aircraftsSlice";
+import { fetchDataAsync, selectAircrafts } from "./aircraftsSlice";
 
 import Navigation from "../../components/Navigation";
 import ShipBox from "../../components/ShipBox";
@@ -12,14 +12,12 @@ import type { ShipData } from "../../components/ShipBox";
 export default function Aircrafts() {
   const dispatch = useAppDispatch();
 
-  const [AircraftsData, setAircraftsData] = useState([]);
+  // const [AircraftsData, setAircraftsData] = useState([]);
+  const aircraftsData = useAppSelector(selectAircrafts);
+  console.log("aircraftsData, ", aircraftsData);
 
   useEffect(() => {
-    dispatch(fetchDataAsync);
-    //   .then((data) => {
-    //   console.log(data);
-    //   setAircraftsData(data);
-    // });
+    dispatch(fetchDataAsync());
   }, []);
 
   return (
@@ -47,7 +45,7 @@ export default function Aircrafts() {
             <ShipBoxHeader />
           </thead>
           <tbody>
-            {AircraftsData.map((shipInfo: ShipData, index) => {
+            {aircraftsData.aircrafts.map((shipInfo: ShipData, index) => {
               return (
                 <ShipBox
                   thumbnail={shipInfo.thumbnail}

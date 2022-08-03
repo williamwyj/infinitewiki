@@ -4,7 +4,7 @@ import React from "react";
 import "./App.css";
 import Navigation from "./components/Navigation";
 import Homepage from "./components/Homepage";
-import Aircrafts from "./components/Aircrafts";
+import Aircrafts from "./features/aircrafts/Aircrafts";
 import { Router, Routes, Route, BrowserRouter } from "react-router-dom";
 
 function App() {

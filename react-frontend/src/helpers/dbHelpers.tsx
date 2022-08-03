@@ -1,6 +1,5 @@
 import axios from "axios";
 
-const dataServer = "http://localhost:8080";
 const getAircraftsData = function () {
   return axios
     .get(`/api/aircrafts`)
