@@ -25,4 +25,28 @@ export const register = (app: express.Application) => {
       res.json({ error: err.message || err });
     };
   });
+
+  app.get('/api/aircrafts', oidc.ensureAuthenticated(), async (req: any, res) => {
+    try {
+      const aircrafts = await db.any(`
+        SELECT * FROM aircrafts`
+      );
+      return res.json(aircrafts);
+    } catch (err) {
+      console.log(err);
+      res.json({ error: err.message || err });
+    };
+  });
+
+  app.get('/api/aircrafts/fighters', oidc.ensureAuthenticated(), async (req: any, res) => {
+    try {
+      const fighters = await db.any(`
+        SELECT * FROM aircrafts WHERE aircraftType = 'fighter'`
+      );
+      return res.json(fighters);
+    } catch (err) {
+      console.log(err);
+      res.json({ error: err.message || err });
+    };
+  });
 };
