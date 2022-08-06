@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS aircrafts;
 CREATE TABLE IF NOT EXISTS aircrafts (
   ship_id INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  aircraftType varchar(20) NOT NULL,
   thumbnail varchar(200) NOT NULL,
   shipName varchar(50) NOT NULL,
   shipType varchar(50) NOT NULL,

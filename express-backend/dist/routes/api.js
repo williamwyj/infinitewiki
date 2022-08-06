@@ -50,6 +50,18 @@ const register = (app) => {
         }
         ;
     }));
+    app.get('/api/aircrafts/fighters', oidc.ensureAuthenticated(), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            const fighters = yield db.any(`
+        SELECT * FROM aircrafts WHERE aircraftType = 'fighter'`);
+            return res.json(fighters);
+        }
+        catch (err) {
+            console.log(err);
+            res.json({ error: err.message || err });
+        }
+        ;
+    }));
 };
 exports.register = register;
 //# sourceMappingURL=api.js.map
