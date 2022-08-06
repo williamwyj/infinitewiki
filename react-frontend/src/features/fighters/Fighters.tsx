@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { fetchDataAsync, selectAircrafts } from "./aircraftsSlice";
+import { fetchDataAsync, selectFighters } from "./fightersSlice";
 
 import Navigation from "../../components/Navigation";
 import ShipBox from "../../components/ShipBox";
 import ShipBoxHeader from "../../components/ShipBoxHeader";
-import "./Aircrafts.scss";
+import "./Fighters.scss";
 
 import type { ShipData } from "../../components/ShipBox";
 
@@ -13,7 +13,7 @@ export default function Aircrafts() {
   const dispatch = useAppDispatch();
 
   // const [AircraftsData, setAircraftsData] = useState([]);
-  const aircraftsData = useAppSelector(selectAircrafts);
+  const aircraftsData = useAppSelector(selectFighters);
   // console.log("aircraftsData, ", aircraftsData);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function Aircrafts() {
   }, []);
 
   return (
-    <div className='PageContainer AircraftsContainer'>
+    <div className='PageContainer PageFighters'>
       <Navigation />
       <div>
         <p>

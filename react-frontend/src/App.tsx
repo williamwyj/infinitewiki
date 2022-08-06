@@ -1,10 +1,11 @@
 import React from "react";
 // import logo from "./logo.svg";
 // import { Counter } from "./features/counter/Counter";
-import "./App.css";
+import "./App.scss";
 import Navigation from "./components/Navigation";
 import Homepage from "./components/Homepage";
 import Aircrafts from "./features/aircrafts/Aircrafts";
+import Fighters from "./features/fighters/Fighters";
 import { Router, Routes, Route, BrowserRouter } from "react-router-dom";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path='/homepage' element={<Homepage />} />
           <Route path='ships/aircrafts' element={<Aircrafts />} />
+          <Route path='ships/aircrafts/fighters' element={<Fighters />} />
         </Routes>
       </BrowserRouter>
       {/* <header className='App-header'>
