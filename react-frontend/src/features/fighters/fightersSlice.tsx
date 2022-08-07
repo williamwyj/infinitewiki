@@ -18,7 +18,7 @@ export const fetchDataAsync = createAsyncThunk(
   "aircrafts/fetchDataAsync",
   async () => {
     const response = await getFightersData();
-    console.log("Response, ", response);
+    // console.log("Response, ", response);
     return response;
   }
 );

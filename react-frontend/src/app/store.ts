@@ -1,11 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
 import aircraftsReducer from '../features/aircrafts/aircraftsSlice';
+import researchAgreementReducer from '../features/researchAgreement/researchAgreementSlice';
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     aircrafts: aircraftsReducer,
+    researchAgreement: researchAgreementReducer,
   },
 });
 

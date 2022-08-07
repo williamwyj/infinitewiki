@@ -22,4 +22,15 @@ const getAircraftsData = function () {
     });
 };
 
-export { getFightersData, getAircraftsData };
+const getResearchAgreement = function () {
+  return axios
+    .get(`/api/researchAgreement`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export { getFightersData, getAircraftsData, getResearchAgreement };
