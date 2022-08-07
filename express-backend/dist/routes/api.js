@@ -62,6 +62,18 @@ const register = (app) => {
         }
         ;
     }));
+    app.get('/api/researchAgreement', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            const researchAgreement = yield db.any(`
+        SELECT * FROM researchAgreement
+      `);
+            return res.json(researchAgreement);
+        }
+        catch (err) {
+            console.log(err);
+            res.json({ error: err.message || err });
+        }
+    }));
 };
 exports.register = register;
 //# sourceMappingURL=api.js.map
