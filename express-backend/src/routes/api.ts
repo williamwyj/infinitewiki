@@ -61,4 +61,16 @@ export const register = (app: express.Application) => {
       res.json({ error: err.message || err });
     }
   })
+
+  app.get('/api/researchAgreementFilters', async (req: any, res) => {
+    try {
+      const researchAgreementFilters = await db.any(`
+        SELECT * FROM researchAgreementFilters
+      `)
+      return res.json(researchAgreementFilters);
+    } catch (err) {
+      console.log(err);
+      res.json({ error: err.message || err });
+    }
+  })
 };

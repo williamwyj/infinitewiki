@@ -74,6 +74,18 @@ const register = (app) => {
             res.json({ error: err.message || err });
         }
     }));
+    app.get('/api/researchAgreementFilters', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            const researchAgreementFilters = yield db.any(`
+        SELECT * FROM researchAgreementFilters
+      `);
+            return res.json(researchAgreementFilters);
+        }
+        catch (err) {
+            console.log(err);
+            res.json({ error: err.message || err });
+        }
+    }));
 };
 exports.register = register;
 //# sourceMappingURL=api.js.map
