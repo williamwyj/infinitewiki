@@ -33,4 +33,20 @@ const getResearchAgreement = function () {
     });
 };
 
-export { getFightersData, getAircraftsData, getResearchAgreement };
+const getResearchAgreementFilters = function () {
+  return axios
+    .get(`/api/researchAgreementFilters`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export {
+  getFightersData,
+  getAircraftsData,
+  getResearchAgreement,
+  getResearchAgreementFilters,
+};

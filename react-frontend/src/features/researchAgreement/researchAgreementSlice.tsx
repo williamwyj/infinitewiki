@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-import { getResearchAgreement } from "../../helpers/dbHelpers";
+import {
+  getResearchAgreement,
+  getResearchAgreementFilters,
+} from "../../helpers/dbHelpers";
 
 export interface researchAgreementData {
   shipName: string;
@@ -10,20 +13,35 @@ export interface researchAgreementData {
   tacticalFilter: string;
 }
 
+export interface researchAgreementFilter {
+  filterName: string;
+  filterType: string;
+  difficulty: string;
+}
+
 export interface ResearchAgreementState {
-  data: { researchAgreement: researchAgreementData[] };
+  data: {
+    researchAgreementData: researchAgreementData[];
+    researchAgreementFilters: researchAgreementFilter[];
+  };
   status: "idle" | "loading" | "loaded" | "failed";
 }
 
 const initialState: ResearchAgreementState = {
-  data: { researchAgreement: [] },
+  data: { researchAgreementData: [], researchAgreementFilters: [] },
   status: "idle",
 };
 
 export const fetchDataAsync = createAsyncThunk(
   "researchAgreement/fetchDataAsync",
   async () => {
-    const response = await getResearchAgreement();
+    let response;
+    await Promise.all([
+      getResearchAgreement(),
+      getResearchAgreementFilters(),
+    ]).then((values) => {
+      response = values;
+    });
     console.log("Response, ", response);
     return response;
   }
@@ -40,7 +58,10 @@ export const researchAgreementSlice = createSlice({
       })
       .addCase(fetchDataAsync.fulfilled, (state, action) => {
         state.status = "loaded";
-        state.data.researchAgreement = action.payload;
+        if (action.payload) {
+          state.data.researchAgreementData = action.payload[0];
+          state.data.researchAgreementFilters = action.payload[1];
+        }
       })
       .addCase(fetchDataAsync.rejected, (state) => {
         state.status = "failed";
